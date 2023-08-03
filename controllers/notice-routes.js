@@ -1,7 +1,6 @@
 const { Thought, User } = require('../models');
 
 const thoughtController = {
-  // get all thoughts
   async getThoughts(req, res) {
     try {
       const dbThoughtData = await Thought.find().sort({ createdAt: -1 });
@@ -12,7 +11,6 @@ const thoughtController = {
     }
   },
 
-  // get single thought by id
   async getSingleThought(req, res) {
     try {
       const dbThoughtData = await Thought.findOne({ _id: req.params.thoughtId });
@@ -28,7 +26,6 @@ const thoughtController = {
     }
   },
 
-  // create a thought
   async createThought(req, res) {
     try {
       const dbThoughtData = await Thought.create(req.body);
@@ -50,7 +47,6 @@ const thoughtController = {
     }
   },
 
-  // update thought
   async updateThought(req, res) {
     try {
       const dbThoughtData = await Thought.findOneAndUpdate(
@@ -70,7 +66,6 @@ const thoughtController = {
     }
   },
 
-  // delete thought
   async deleteThought(req, res) {
     try {
       const dbThoughtData = await Thought.findOneAndRemove({ _id: req.params.thoughtId });
@@ -79,7 +74,6 @@ const thoughtController = {
         return res.status(404).json({ message: 'No thought with this id!' });
       }
 
-      // remove thought id from user's `thoughts` field
       const dbUserData = await User.findOneAndUpdate(
         { thoughts: req.params.thoughtId },
         { $pull: { thoughts: req.params.thoughtId } },
@@ -97,7 +91,6 @@ const thoughtController = {
     }
   },
 
-  // add a reaction to a thought
   async addReaction(req, res) {
     try {
       const dbThoughtData = await Thought.findOneAndUpdate(
@@ -117,7 +110,6 @@ const thoughtController = {
     }
   },
 
-  // remove reaction from a thought
   async removeReaction(req, res) {
     try {
       const dbThoughtData = await Thought.findOneAndUpdate(
