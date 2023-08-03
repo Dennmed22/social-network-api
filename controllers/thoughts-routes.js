@@ -37,10 +37,10 @@ const thoughtController = {
       );
 
       if (!dbUserData) {
-        return res.status(404).json({ message: 'Thought created but no user with this id!' });
+        return res.status(404).json({ message: 'Created Thought but no user found with this id!' });
       }
 
-      res.json({ message: 'Thought successfully created!' });
+      res.json({ message: 'Successfully created thought!' });
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
@@ -56,7 +56,7 @@ const thoughtController = {
       );
 
       if (!dbThoughtData) {
-        return res.status(404).json({ message: 'No thought with this id!' });
+        return res.status(404).json({ message: 'This id has no thought!' });
       }
 
       res.json(dbThoughtData);
@@ -71,7 +71,7 @@ const thoughtController = {
       const dbThoughtData = await Thought.findOneAndRemove({ _id: req.params.thoughtId });
 
       if (!dbThoughtData) {
-        return res.status(404).json({ message: 'No thought with this id!' });
+        return res.status(404).json({ message: 'This id has no thought!' });
       }
 
       const dbUserData = await User.findOneAndUpdate(
@@ -81,10 +81,10 @@ const thoughtController = {
       );
 
       if (!dbUserData) {
-        return res.status(404).json({ message: 'Thought created but no user with this id!' });
+        return res.status(404).json({ message: 'Created Thought but no user found with this id!' });
       }
 
-      res.json({ message: 'Thought successfully deleted!' });
+      res.json({ message: 'Successfully deleted Thought!' });
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
@@ -100,7 +100,7 @@ const thoughtController = {
       );
 
       if (!dbThoughtData) {
-        return res.status(404).json({ message: 'No thought with this id!' });
+        return res.status(404).json({ message: 'This id has no thought!' });
       }
 
       res.json(dbThoughtData);
@@ -119,7 +119,7 @@ const thoughtController = {
       );
 
       if (!dbThoughtData) {
-        return res.status(404).json({ message: 'No thought with this id!' });
+        return res.status(404).json({ message: 'This id has no thought!' });
       }
 
       res.json(dbThoughtData);

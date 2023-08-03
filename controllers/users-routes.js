@@ -16,7 +16,7 @@ const userController = {
     try {
       const dbUserData = await User.findOne({ _id: req.params.id });
       if (!dbUserData) {
-        res.status(404).json({ message: 'No User found with this id!' });
+        res.status(404).json({ message: 'With this id no User was found!' });
         return;
       }
       res.json(dbUserData);
@@ -43,7 +43,7 @@ const userController = {
         { new: true, runValidators: true }
       );
       if (!dbUserData) {
-        res.status(404).json({ message: 'No User found with this id!' });
+        res.status(404).json({ message: 'With this id no User was found!' });
         return;
       }
       res.json(dbUserData);
@@ -56,7 +56,7 @@ const userController = {
     try {
       const dbUserData = await User.findOneAndDelete({ _id: req.params.id });
       if (!dbUserData) {
-        res.status(404).json({ message: 'No User found with this id!' });
+        res.status(404).json({ message: 'With this id no User was found!' });
         return;
       }
       res.json(dbUserData);
@@ -73,7 +73,7 @@ const userController = {
         { new: true }
       );
       if (!dbUserData) {
-        res.status(404).json({ message: 'No friend found with this id!' });
+        res.status(404).json({ message: 'With this id no friend was found!' });
         return;
       }
       res.json(dbUserData);
